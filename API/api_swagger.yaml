@@ -1,0 +1,227 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "RESTful API for the \"Intelligent Virtual Assistant for Restaurants\" project. Built with FastAPI, PostgreSQL, and Rasa integration.\n",
+    "version" : "1.0.0",
+    "title" : "Restaurant Virtual Assistant API"
+  },
+  "tags" : [ {
+    "name" : "Authentication"
+  }, {
+    "name" : "User"
+  }, {
+    "name" : "Menu"
+  }, {
+    "name" : "Table"
+  }, {
+    "name" : "Reservation"
+  }, {
+    "name" : "Order"
+  }, {
+    "name" : "Rasa Integration"
+  } ],
+  "paths" : {
+    "/auth/register" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Register a new user",
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "User created successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/auth/login" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "User login",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Login success"
+          },
+          "401" : {
+            "description" : "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/users/me" : {
+      "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Get current user info",
+        "parameters" : [ ],
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Current user info"
+          }
+        }
+      }
+    },
+    "/menu/items" : {
+      "get" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Get all menu items",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "List of menu items"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Create new menu item",
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "Menu item created"
+          }
+        }
+      }
+    },
+    "/menu/items/{item_id}" : {
+      "get" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Get menu item by ID",
+        "parameters" : [ {
+          "name" : "item_id",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Menu item detail"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Update menu item",
+        "parameters" : [ {
+          "name" : "item_id",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Menu item updated"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Delete menu item",
+        "parameters" : [ {
+          "name" : "item_id",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Menu item deleted"
+          }
+        }
+      }
+    },
+    "/tables" : {
+      "get" : {
+        "tags" : [ "Table" ],
+        "summary" : "Get all tables",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "List of tables"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Table" ],
+        "summary" : "Add new table",
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "Table created"
+          }
+        }
+      }
+    },
+    "/reservations" : {
+      "get" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Get all reservations",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "List of reservations"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Create a new reservation",
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "Reservation created"
+          }
+        }
+      }
+    },
+    "/orders" : {
+      "get" : {
+        "tags" : [ "Order" ],
+        "summary" : "Get all orders",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "List of orders"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Order" ],
+        "summary" : "Create new order",
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "Order created"
+          }
+        }
+      }
+    },
+    "/rasa/reserve_table" : {
+      "post" : {
+        "tags" : [ "Rasa Integration" ],
+        "summary" : "Rasa creates reservation",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Reservation created by Rasa"
+          }
+        }
+      }
+    },
+    "/rasa/get_menu" : {
+      "get" : {
+        "tags" : [ "Rasa Integration" ],
+        "summary" : "Rasa fetches menu",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Menu returned"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
